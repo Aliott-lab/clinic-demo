@@ -1,16 +1,8 @@
-<!doctype html>
-<html lang="fa" dir="rtl">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="robots" content="noindex">
-<link rel="icon" href="client/logo.png" type="image/png">
 <title>سپهر آرامش</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700;800&display=swap">
 <style>
-  /* self-hosted: Google Fonts is unreliable from Iran */
-  @font-face { font-family: "Vazirmatn"; font-weight: 400; font-display: swap; src: url("client/assets/vazirmatn-arabic-400-normal-DMZFCm7K.woff2") format("woff2"); }
-  @font-face { font-family: "Vazirmatn"; font-weight: 700; font-display: swap; src: url("client/assets/vazirmatn-arabic-700-normal-Dge_DOjm.woff2") format("woff2"); }
-  @font-face { font-family: "Vazirmatn"; font-weight: 800; font-display: swap; src: url("client/assets/vazirmatn-arabic-800-normal-Bwnt96zj.woff2") format("woff2"); }
   /* Layout: one centered column, two doors side by side (stacked on phones). Light = pomegranate, dark = turquoise, the clinic's own two themes. */
   :root {
     --bg: oklch(0.94 0.025 15);
@@ -41,12 +33,13 @@
     padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
     padding-block: 40px 56px;
   }
-  main { max-width: 880px; margin: 0 auto; display: flex; flex-direction: column; gap: 28px; }
+  main { max-width: 1120px; margin: 0 auto; display: flex; flex-direction: column; gap: 28px; }
   header { display: flex; align-items: center; gap: 16px; }
   header img { width: 64px; height: 64px; object-fit: contain; flex: none; }
   h1 { margin: 0; font-size: 28px; font-weight: 800; line-height: 1.3; text-wrap: balance; }
   .lead { margin: 4px 0 0; color: var(--muted); max-width: 60ch; }
-  .doors { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+  .doors { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+  @media (max-width: 960px) { .doors { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
   @media (max-width: 640px) { .doors { grid-template-columns: minmax(0, 1fr); } h1 { font-size: 23px; } }
   .door {
     display: flex; flex-direction: column; gap: 10px; padding: 24px; border-radius: 24px; min-width: 0;
@@ -67,15 +60,13 @@
   .note { font-size: 14px; color: var(--muted); padding: 14px 18px; border-radius: 16px; border: 1px dashed var(--line); }
   @media (prefers-reduced-motion: reduce) { .door { transition: none; } }
 </style>
-</head>
-<body>
 
 <main dir="rtl" lang="fa">
   <header>
     <img src="client/logo.png" alt="لوگوی کلینیک سپهر آرامش">
     <div>
       <h1>سامانه‌ی نوبت‌دهی سپهر آرامش</h1>
-      <p class="lead">نسخه‌ی نمایشی دو پنل سامانه. هر کدام را باز کنید و مثل یک کاربر واقعی با آن کار کنید.</p>
+      <p class="lead">نسخه‌ی نمایشی سه پنل سامانه. هر کدام را باز کنید و مثل یک کاربر واقعی با آن کار کنید.</p>
     </div>
   </header>
 
@@ -95,18 +86,29 @@
     <a class="door" href="staff/index.html">
       <span class="who">برای منشی و مدیر · روی کامپیوتر</span>
       <h2>پنل پذیرش</h2>
-      <p>تقویم هفتگی مشاوران، صندوق و گزارش‌ها.</p>
+      <p>تقویم مشاوران، صندوق، گزارش‌ها و تنظیمات کلینیک.</p>
       <ul>
-        <li>تقویم نوبت‌ها و بستن روز</li>
+        <li>تقویم هفتگی و نمای روزانه‌ی همه‌ی مشاوران با اتاق‌های درگیر</li>
         <li>میز پذیرش و ثبت تراکنش</li>
-        <li>گزارش ماهانه و گزارش فعالیت‌ها</li>
+        <li>گزارش ماهانه، گزارش فعالیت‌ها و پرونده‌ی بالینی برای مدیر</li>
+        <li>تعداد اتاق‌ها و تأیید درخواست تغییر ساعت مشاوران</li>
       </ul>
       <span class="login">ورود: هر نام کاربری و هر رمزی</span>
+      <span class="go">باز کردن پنل</span>
+    </a>
+    <a class="door" href="counselor/index.html">
+      <span class="who">برای مشاوران · گوشی و کامپیوتر</span>
+      <h2>پنل مشاوران</h2>
+      <p>برنامه، مراجعین، پرونده و تسویه‌ی هر مشاور.</p>
+      <ul>
+        <li>برنامه‌ی جلسات و درخواست تغییر ساعت</li>
+        <li>یادداشت جلسه و پرونده‌ی بالینی هر مراجع</li>
+        <li>تسویه‌ی ماهانه و آمار</li>
+      </ul>
+      <span class="login">ورود: هر شماره‌ی ۰۹… و هر کد ۵ رقمی</span>
       <span class="go">باز کردن پنل</span>
     </a>
   </div>
 
   <p class="note">همه‌ی اسم‌ها، نوبت‌ها و مبالغ ساختگی است و فقط در همین مرورگر نگه داشته می‌شود. با بارگذاری دوباره‌ی صفحه همه چیز به حالت اول برمی‌گردد. چیزی به سرور کلینیک فرستاده نمی‌شود.</p>
 </main>
-</body>
-</html>
